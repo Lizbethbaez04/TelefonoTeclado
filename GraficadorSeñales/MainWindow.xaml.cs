@@ -161,7 +161,6 @@ namespace GraficadorSeñales
                 }
             }
             
-
             //Ayuda a recorrer todas las estructuras de datos que hay
             foreach (Muestra muestra in señal.Muestras)
             {
@@ -172,7 +171,7 @@ namespace GraficadorSeñales
                 plnGrafica.Points.Add(adaptarCoordenadas(muestra.X, muestra.Y, tiempoInicial, amplitudMaxima));
             }
 
-            //Se recorre todo el arreglo de la tranormada de fourier para encontrar el indice
+            //Se recorre todo el arreglo de la transformada de fourier para encontrar el indice
             if(cbOperacion.SelectedIndex == 4)
             {
                 int indiceMaximo = 0;
@@ -185,11 +184,10 @@ namespace GraficadorSeñales
                     double frecuencia = (double)(indiceMaximo * señalResultante.FrecuenciaMuestreo) / (double)señalResultante.Muestras.Count;
                     //Pasar numero a "texto"
                     lblHertz.Text = frecuencia.ToString("N") + "Hz";
-                }
+                } 
+                if()
             }
-
-
-
+                        
             lblLimiteSuperior.Text = amplitudMaxima.ToString("F");
             lblLimiteInferior.Text = "-" + amplitudMaxima.ToString("F");
 
