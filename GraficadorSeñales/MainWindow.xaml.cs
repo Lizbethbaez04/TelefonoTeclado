@@ -174,18 +174,43 @@ namespace GraficadorSeñales
             //Se recorre todo el arreglo de la transformada de fourier para encontrar el indice
             if(cbOperacion.SelectedIndex == 4)
             {
+                //Se obtiene la frecuencia baja de la tecla
                 int indiceMaximo = 0;
-                for(int i=0; i<señalResultante.Muestras.Count/2; i++)
+                int indiceInicial = (int)((690.0 * (double)(señalResultante.Muestras.Count)) / señalResultante.FrecuenciaMuestreo);
+                int indiceFinal= (int)((950.0 * (double)(señalResultante.Muestras.Count)) / señalResultante.FrecuenciaMuestreo);
+                for (int i=indiceInicial; i<indiceFinal; i++)
                 {
                     if(señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximo].Y)
                     {
                         indiceMaximo = i;
                     }
-                    double frecuencia = (double)(indiceMaximo * señalResultante.FrecuenciaMuestreo) / (double)señalResultante.Muestras.Count;
-                    //Pasar numero a "texto"
-                    lblHertz.Text = frecuencia.ToString("N") + "Hz";
-                } 
-                if()
+                                    
+                }
+                double frecuencia = (double)(indiceMaximo * señalResultante.FrecuenciaMuestreo) / (double)señalResultante.Muestras.Count;
+                //Pasar numero a "texto"
+                lblHertzBaja.Text = frecuencia.ToString("N") + "Hz";
+                //Se obtiene la frecuencia alta de la tecla
+                int indiceMaximoAlta = 0;
+                int indiceInicialAlta = (int)((1200.0 * (double)señalResultante.Muestras.Count) / (double)señalResultante.FrecuenciaMuestreo);
+                int indiceFinalAlta = (int)((1482.0 * (double)señalResultante.Muestras.Count) / (double)señalResultante.FrecuenciaMuestreo);
+                for (int i = indiceInicialAlta; i < indiceFinalAlta; i++)
+                {
+                    if (señalResultante.Muestras[i].Y > señalResultante.Muestras[indiceMaximoAlta].Y)
+                    {
+                        indiceMaximoAlta = i;
+                    }
+                }
+                double frecuenciaAlta = (double)(indiceMaximoAlta * señalResultante.FrecuenciaMuestreo) / (double)señalResultante.Muestras.Count;
+                lblHertzAlta.Text = frecuenciaAlta.ToString("N") + "Hz";
+
+                //Se obtiene el numero de la tecla
+                double tecla;
+                if(frecuencia <= 690.0 && frecuenciaAlta <= )
+                {
+                    tecla = 1;
+                    lblTecla.Text = tecla.ToString("N");
+                }
+                if(frecuencia )
             }
                         
             lblLimiteSuperior.Text = amplitudMaxima.ToString("F");
